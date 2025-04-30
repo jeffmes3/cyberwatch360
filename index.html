@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CyberWatch 360 - Dashboard to display Watchdog Live Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #00FFE1;
+    }
+    .section { margin-bottom: 30px; }
+    .card { background: #1e1e1e; padding: 20px; border-radius: 10px; margin-top: 10px; }
+    .command-box { background: #2e2e2e; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    .tabs button {
+      padding: 10px;
+      margin: 5px;
+      background-color: #222;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .tabs button.active { background-color: #00FFE1; color: #000; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+<h1>CyberWatch 360</h1>
+<p>Dashboard to display Watchdog Live Dashboard</p>
+
+<div class="section">
+  <h2>📚 Learn Nmap</h2>
+  <div class="card">
+    <p><strong>Official Nmap Documentation:</strong> <a href="https://nmap.org/book/man.html" target="_blank" style="color:#00ffe1;">nmap.org/book/man.html</a></p>
+    <ul>
+      <li><code>nmap -sV</code> – Service/version detection</li>
+      <li><code>nmap -O</code> – OS fingerprinting</li>
+      <li><code>nmap --script vuln</code> – Vulnerability scan</li>
+      <li><code>nmap --script http-enum</code> – Web enumeration</li>
+      <li><code>nmap --script brute</code> – Password brute force</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🧰 Custom Nmap Scanner Builder</h2>
+  <div class="tabs">
+    <button onclick="selectTab('vuln')">Vulnerability Scanner</button>
+    <button onclick="selectTab('password')">Password Audit</button>
+    <button onclick="selectTab('web')">Web Scanner</button>
+    <button onclick="selectTab('wireless')">Wireless Scanner</button>
+    <button onclick="selectTab('exploit')">Exploitation</button>
+  </div>
+
+  <div id="vuln" class="card hidden">
+    <h3>Vulnerability Scanner</h3>
+    <p>Flags: <code>nmap --script vuln [target]</code></p>
+    <button onclick="copyCommand('nmap --script vuln ')">📋 Copy Command</button>
+  </div>
+  <div id="password" class="card hidden">
+    <h3>Password Audit</h3>
+    <p>Flags: <code>nmap --script brute [target]</code></p>
+    <button onclick="copyCommand('nmap --script brute ')">📋 Copy Command</button>
+  </div>
+  <div id="web" class="card hidden">
+    <h3>Web Scanner</h3>
+    <p>Flags: <code>nmap --script http-enum,http-title [target]</code></p>
+    <button onclick="copyCommand('nmap --script http-enum,http-title ')">📋 Copy Command</button>
+  </div>
+  <div id="wireless" class="card hidden">
+    <h3>Wireless Scanner (LAN broadcast)</h3>
+    <p>Flags: <code>nmap --script broadcast-dhcp-discover [target]</code></p>
+    <button onclick="copyCommand('nmap --script broadcast-dhcp-discover ')">📋 Copy Command</button>
+  </div>
+  <div id="exploit" class="card hidden">
+    <h3>Exploitation Scanner</h3>
+    <p>Flags: <code>nmap --script exploit [target]</code></p>
+    <button onclick="copyCommand('nmap --script exploit ')">📋 Copy Command</button>
+  </div>
+</div>
+
+<script>
+  function selectTab(tabId) {
+    document.querySelectorAll('.card').forEach(card => card.classList.add('hidden'));
+    document.getElementById(tabId).classList.remove('hidden');
+    document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  function copyCommand(command) {
+    navigator.clipboard.writeText(command + "192.168.1.1");
+    alert("Copied to clipboard: " + command + "192.168.1.1");
+  }
+</script>
+
+</body>
+</html>

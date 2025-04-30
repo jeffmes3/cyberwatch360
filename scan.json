@@ -1,0 +1,29 @@
+[
+  {
+    "Timestamp": "2025-04-29 12:00:00",
+    "IP Address": "192.168.1.10",
+    "Port": "22",
+    "Service": "ssh",
+    "Product": "OpenSSH",
+    "Version": "8.2p1",
+    "Risk": "MEDIUM"
+  },
+  {
+    "Timestamp": "2025-04-29 12:00:00",
+    "IP Address": "192.168.1.10",
+    "Port": "80",
+    "Service": "http",
+    "Product": "Apache",
+    "Version": "2.4.41",
+    "Risk": "LOW"
+  },
+  {
+    "Timestamp": "2025-04-29 12:00:00",
+    "IP Address": "192.168.1.10",
+    "Port": "445",
+    "Service": "microsoft-ds",
+    "Product": "Samba smbd",
+    "Version": "4.11.6",
+    "Risk": "HIGH"
+  }
+]
